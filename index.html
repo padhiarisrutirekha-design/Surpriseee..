@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Crazy Love Surprise ❤️</title>
+
+<style>
+body{margin:0;font-family:Segoe UI;background:black;color:white;text-align:center;overflow-x:hidden;}
+.page{display:none;padding:40px;}
+.show{display:block;}
+button,input{padding:12px 20px;font-size:18px;border-radius:10px;border:none;margin:10px;}
+button{background:#ff0066;color:white;cursor:pointer;}
+
+.star{position:fixed;width:2px;height:2px;background:white;animation:fall 8s linear infinite;}
+@keyframes fall{0%{transform:translateY(-10px);}100%{transform:translateY(900px);}}
+
+.count{font-size:60px;color:#ff0066;}
+.envelope{font-size:130px;cursor:pointer;}
+.ring{font-size:100px;animation:pulse 1s infinite alternate;}
+@keyframes pulse{from{transform:scale(1);}to{transform:scale(1.3);}}
+
+.heart{position:fixed;font-size:25px;animation:float 5s linear forwards;}
+@keyframes float{0%{transform:translateY(0);}100%{transform:translateY(-800px);opacity:0;}}
+
+.firework{position:fixed;font-size:30px;animation:boom 2s linear forwards;}
+@keyframes boom{0%{transform:scale(0);}100%{transform:scale(2);opacity:0;}}
+
+img{max-width:300px;border-radius:20px;margin-top:20px;}
+
+.chat{max-width:400px;margin:auto;background:#111;padding:15px;border-radius:15px;text-align:left;}
+.msg{background:#ff0066;padding:10px;border-radius:10px;margin:8px;color:white;}
+
+.letter{max-width:750px;margin:auto;background:white;color:black;padding:25px;border-radius:20px;line-height:1.8;}
+.typing{font-size:28px;margin-top:80px;min-height:40px;}
+</style>
+</head>
+
+<body>
+
+<div id="typing" class="typing"></div>
+
+<div id="lock" class="page">
+<h2>🔐 Enter Password</h2>
+<input type="password" id="pass">
+<br>
+<button onclick="unlock()">Enter ❤️</button>
+</div>
+
+<div id="intro" class="page">
+<h2>Loading Romantic Surprise...</h2>
+<img src="love-happy-sticker-love-happy-cute.gif">
+<div id="count" class="count"></div>
+
+</div>
+
+<div id="envelopePage" class="page">
+<h2>Srutii.. sent you a message ❤️</h2>
+<div class="envelope" onclick="openEnvelope()">💌</div>
+</div>
+
+<div id="proposal" class="page">
+<h2>One Last Surprise...</h2>
+<div class="ring">💍</div>
+<button onclick="showChat()">Continue ❤️</button>
+</div>
+
+<div id="chatPage" class="page">
+<h2>💬 Our Love Chat</h2>
+<div class="chat">
+<div class="msg">Hi Suman❤️</div>
+<div class="msg">I LOVE YOU SO Muchhh...</div>
+<div class="msg">Ready for your final surprise? 😘</div>
+</div>
+<button onclick="hug()">🤗 Hug</button>
+<button onclick="kiss()">😘 Kiss</button>
+<br>
+<button onclick="showFinal()">Open Love Letter</button>
+</div>
+
+<div id="final" class="page">
+<img src="photo2.jpg">
+<div class="letter">
+<h2>Dear Suman❤️</h2>
+<p>
+I don’t know how to say everything perfectly, but I want you to know how much you mean to me.
+You came into my life quietly and became my biggest happiness. I promise to stand beside you in every situation.
+When life is easy, I will celebrate with you.
+When life is hard, I will never leave your side.
+Your happiness is my biggest wish.
+Main tumhare saath har fight, har struggle aur har khushi share karna chahti hoon.
+Because loving you is not a phase, it’s my forever decision.
+I Love Youuu always and endlessly 😘😘❤️
+</p>
+</div>
+</div>
+
+<audio id="bgmusic" src="Sitaare – Ikkis Ringtone Download - MobCup.Com.Co.mp3" loop></audio>
+<audio id="sound" src="krnbeatz-bubble-in-water-422579.mp3"></audio>
+
+<script>
+
+/* typing intro */
+let t="A Crazy Romantic Surprise is Waiting...";
+let i=0;
+function type(){
+if(i<t.length){document.getElementById("typing").innerHTML+=t.charAt(i);i++;setTimeout(type,60);}
+else{showPage("lock");}
+}
+type();
+
+/* stars */
+for(let s=0;s<100;s++){
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+document.body.appendChild(star);
+}
+
+function showPage(id){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("show"));
+document.getElementById(id).classList.add("show");
+}
+
+/* unlock */
+function unlock(){
+if(document.getElementById("pass").value==="suman"){
+showPage("intro");
+startCountdown();
+document.getElementById("bgmusic").play();
+}else{alert("Wrong password ❤️");}
+}
+
+function startCountdown(){
+let arr=[3,2,1],c=0,div=document.getElementById("count");
+let t=setInterval(()=>{
+div.innerText=arr[c]+"s";c++;
+if(c==arr.length){clearInterval(t);setTimeout(()=>showPage("envelopePage"),1200);}
+},1000);
+}
+
+function openEnvelope(){
+document.getElementById("sound").play();
+for(let i=0;i<70;i++){
+let h=document.createElement("div");
+h.className="heart";h.innerText="❤️";
+h.style.left=Math.random()*100+"%";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+}
+showPage("proposal");
+}
+
+function showChat(){showPage("chatPage");}
+
+function hug(){alert("🤗 Warm Hug Sent with Love ❤️");}
+function kiss(){alert("😘 Sweet Kiss Sent with Love ❤️");}
+
+function showFinal(){
+showPage("final");
+for(let i=0;i<40;i++){
+let f=document.createElement("div");
+f.className="firework";
+f.innerText="🎆";
+f.style.left=Math.random()*100+"%";
+f.style.top=Math.random()*100+"%";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),2000);
+}
+}
+</script>
+
+</body>
+</html>
+
